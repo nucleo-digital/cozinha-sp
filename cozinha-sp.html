@@ -1,0 +1,30 @@
+<head>
+  <title>cozinha-sp</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+<form id="payment_form" action="https://seusite.com.br/transactions/new" method="POST">
+    Número do cartão: <input type="text" id="card_number"/>
+    <br/>
+    Nome (como escrito no cartão): <input type="text" id="card_holder_name"/>
+    <br/>
+    Mês de expiração: <input type="text" id="card_expiration_month"/>
+    <br/>
+    Ano de expiração: <input type="text" id="card_expiration_year"/>
+    <br/>
+    Código de segurança: <input type="text" id="card_cvv"/>
+    <br/>
+    <div id="field_errors">
+    </div>
+    <br/>
+    <input type="submit"></input>
+</form>
+	<button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
