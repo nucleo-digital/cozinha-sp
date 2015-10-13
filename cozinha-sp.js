@@ -95,8 +95,7 @@ if (Meteor.isServer) {
 
 Meteor.methods({
 	'assinar_plano': function (plan_id, card_hash, customer, address, phone) {
-		var waitConvert = Async.runSync(function(done) {
-			HTTP.call("POST", "https://api.pagar.me/1/subscriptions", {
+		return HTTP.call("POST", "https://api.pagar.me/1/subscriptions", {
 				data: {
 					api_key: Meteor.settings.PagarMe.API_KEY,
 					plan_id: plan_id,
@@ -106,9 +105,7 @@ Meteor.methods({
 						phone: phone
 					})
 				}
-			}, done);
-		});
-		return waitConvert.result
+			});
 	}
 });
 
