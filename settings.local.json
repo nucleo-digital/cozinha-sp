@@ -1,0 +1,11 @@
+{
+	"PagarMe": {
+		"API_KEY": "ak_test_",
+		"ENCRYPTION_KEY": "ek_test_"
+	},
+	"public": {
+		"PagarMe": {
+			"ENCRYPTION_KEY": "ek_test_"
+		}
+	}
+}

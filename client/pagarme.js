@@ -4796,5 +4796,5 @@ PagarMe.CreditCard.prototype.generateHash = function(callback) {
 
 PagarMe.creditCard = PagarMe.CreditCard;
 PagarMe.creditCard.prototype = PagarMe.CreditCard.prototype;
-
+window.PagarMe = PagarMe;
 })(PagarMe, window);

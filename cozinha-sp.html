@@ -3,28 +3,92 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Cozinha SP</h1>
 
   {{> hello}}
 </body>
-
+<template name="alert">
+	{{#if data}}
+		<div class="{{data.className}}">
+			{{data.text}}
+		</div>
+	{{/if}}
+</template>
 <template name="hello">
-<form id="payment_form" action="https://seusite.com.br/transactions/new" method="POST">
-    Número do cartão: <input type="text" id="card_number"/>
-    <br/>
-    Nome (como escrito no cartão): <input type="text" id="card_holder_name"/>
-    <br/>
-    Mês de expiração: <input type="text" id="card_expiration_month"/>
-    <br/>
-    Ano de expiração: <input type="text" id="card_expiration_year"/>
-    <br/>
-    Código de segurança: <input type="text" id="card_cvv"/>
-    <br/>
-    <div id="field_errors">
-    </div>
-    <br/>
-    <input type="submit"></input>
-</form>
-	<button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+	<form id="pagamento">
+  		{{> alert data=flash_message}}
+		<fieldset id="dados_do_apoiador" class="">
+			<legend>Dados do apoiador</legend>
+			<div class="input text">
+				<label for="customer_name">Nome:</label>
+				<input type="text" name="customer_name">
+			</div>
+			<div class="input text">
+				<label for="customer_document_number">Número documento</label>
+				<input type="text" name="customer_document_number">
+			</div>
+			<div class="input text">
+				<label for="customer_email">E-mail</label>
+				<input type="text" name="customer_email">
+			</div>
+			<div class="input text">
+				<label for="customer_born_at">Data de nascimento</label>
+				<input type="text" name="customer_born_at">
+			</div>
+			<div class="input radio">
+				<label for="customer_gender"></label>
+				<input type="radio" name="customer_gender" value="m">Masculino
+				<input type="radio" name="customer_gender" value="f">Feminino
+
+			</div>
+			<div class="input text">
+				<label for="customer_address_street">Endereço</label>
+				<input type="text" name="customer_address_street">
+			</div>
+			<div class="input text">
+				<label for="customer_adress_neighborhood">Bairro</label>
+				<input type="text" name="customer_address_neighborhood">
+			</div>
+			<div class="input text">
+				<label for="customer_address_zipcode">CEP</label>
+				<input type="text" name="customer_address_zipcode">
+			</div>
+			<div class="input text">
+				<label for="customer_address_street_number">Número</label>
+				<input type="text" name="customer_address_street_number">
+			</div>
+			<div class="input text">
+				<label for="customer_address_complementary">Complemento</label>
+				<input type="text" name="customer_address_complementary">
+			</div>
+			<div class="input text">
+				<label for="customer_phone_ddd">DDD telefone:</label>
+				<input type="text" name="customer_phone_ddd">
+			</div>
+			<div class="input text">
+				<label for="customer_phone_number">Número telefone</label>
+				<input type="text" name="customer_phone_number">
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Dados do cartão</legend>
+			<div class="input text">
+				<label>Plano:</label>
+				<select name="plan_id">
+					<option value="21690">Mínimo</option>
+					<option value="21691">Mínimo 2</option>
+					<option value="21692">Ideal</option>
+					<option value="21693">Ideal 2</option>
+				</select>
+			</div>
+			<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number"/></div>
+			<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name"/></div>
+			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month"/></div>
+			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year"/></div>
+			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv"/></div>
+		</fieldset>
+		<div id="field_errors">
+		</div>
+		<input type="submit">
+	</form>
 </template>
