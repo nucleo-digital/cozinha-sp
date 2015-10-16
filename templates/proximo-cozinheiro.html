@@ -1,0 +1,108 @@
+<template name="proximo_cozinheiro">
+	<h2>ajude o próximo cozinheiro a realizar seu sonho</h2>
+	<p>A cada mês, oferecemos a um jovem da periferia a chance de realizar o sonho de empreender no mundo da gastronomia e depois montar seu próprio negócio. Para que esse sonho seja possível, precisamos da sua ajuda.</p>
+	<p>Temos auxílio de doações e retorno das vendas de refeições, porém estão faltando 20% dos nossos custos mensais para fecharmos as contas. É aí que você entra!</p>
+	<div class="meta-cozinheiro">
+		{{> meta_cozinheiro}}
+	</div>
+	<div class="doacao">
+		{{> doacao}}
+	</div>
+</template>
+
+<template name="meta_cozinheiro">
+	<img src="" alt=""/>
+	<h3>Lorem Ipsum</h3>
+	<p>lorem ipsum lorem ipsum lorem ipsum</p>
+
+	<div class="progresso">
+		<div class="total">
+			<div class="alcancado">
+				<p><span>R$</span>1.200,00</p>
+			</div>
+		</div>
+		<p><span>R$</span>3.700,00</p>
+	</div>
+
+	<p>Total alcançado até o momento</p>
+</template>
+
+<template name="doacao">
+	<h5>Ser um doador recorrente AINDA te dá o direito a um brinde exclusivo. Escolha o valor da sua assinatura mensal:</h5>
+	<form id="pagamento">
+  		{{> alert data=flash_message}}
+		<fieldset id="dados_do_apoiador" class="">
+			<legend>Dados do apoiador</legend>
+			<div class="input text">
+				<label for="customer_name">Nome:</label>
+				<input type="text" name="customer_name">
+			</div>
+			<div class="input text">
+				<label for="customer_document_number">Número documento</label>
+				<input type="text" name="customer_document_number">
+			</div>
+			<div class="input text">
+				<label for="customer_email">E-mail</label>
+				<input type="text" name="customer_email">
+			</div>
+			<div class="input text">
+				<label for="customer_born_at">Data de nascimento</label>
+				<input type="text" name="customer_born_at">
+			</div>
+			<div class="input radio">
+				<label for="customer_gender"></label>
+				<input type="radio" name="customer_gender" value="m">Masculino
+				<input type="radio" name="customer_gender" value="f">Feminino
+
+			</div>
+			<div class="input text">
+				<label for="customer_address_street">Endereço</label>
+				<input type="text" name="customer_address_street">
+			</div>
+			<div class="input text">
+				<label for="customer_adress_neighborhood">Bairro</label>
+				<input type="text" name="customer_address_neighborhood">
+			</div>
+			<div class="input text">
+				<label for="customer_address_zipcode">CEP</label>
+				<input type="text" name="customer_address_zipcode">
+			</div>
+			<div class="input text">
+				<label for="customer_address_street_number">Número</label>
+				<input type="text" name="customer_address_street_number">
+			</div>
+			<div class="input text">
+				<label for="customer_address_complementary">Complemento</label>
+				<input type="text" name="customer_address_complementary">
+			</div>
+			<div class="input text">
+				<label for="customer_phone_ddd">DDD telefone:</label>
+				<input type="text" name="customer_phone_ddd">
+			</div>
+			<div class="input text">
+				<label for="customer_phone_number">Número telefone</label>
+				<input type="text" name="customer_phone_number">
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend>Dados do cartão</legend>
+			<div class="input text">
+				<label>Plano:</label>
+				<select name="plan_id">
+					<option value="21690">Mínimo</option>
+					<option value="21691">Mínimo 2</option>
+					<option value="21692">Ideal</option>
+					<option value="21693">Ideal 2</option>
+				</select>
+			</div>
+			<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number"/></div>
+			<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name"/></div>
+			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month"/></div>
+			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year"/></div>
+			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv"/></div>
+		</fieldset>
+		<div id="field_errors">
+		</div>
+		<input type="submit">
+	</form>
+</template>

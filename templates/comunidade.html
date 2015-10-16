@@ -1,0 +1,35 @@
+<template name="comunidade">
+	<h2>entre para a comunidade</h2>
+	<p>Temos uma movimentada agenda de eventos e workshops programada para movimentar a Praça dos Arcos! Quer saber tudo antes de todo mundo? Cadastre seu número de celular e/ou e-mail para enviaremos as últimas notícias!</p>
+	<form name="comunidade">
+		<input type="text" name="nome" placeholder="Nome">
+		<input type="text" name="email" placeholder="E-mail">
+		<input type="text" name="celular" placeholder="Celular">
+		<input type="submit" value="enviar">
+	</form>
+
+	<p>* É necessário que você cadastre em sua agenda o nosso telefone para receber as notícias: 11 XXXXX XXXX</p>
+
+	<div class="onde-estamos">
+		{{> onde_estamos }}
+	</div>
+	<div class="ultimos-posts">
+		{{> ultimos_posts }}
+	</div>
+</template>
+
+<template name="onde_estamos">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14629.523318579248!2d-46.67284757498239!3d-23.554762154976636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce582c38ee619d%3A0xcbe0d1a358266b!2sPra%C3%A7a+dos+Arcos+-+Higien%C3%B3polis%2C+S%C3%A3o+Paulo+-+SP!5e0!3m2!1sen!2sbr!4v1445024445277" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+</template>
+
+<template name="ultimos_posts">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=167881963404494";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<div class="fb-page" data-href="https://www.facebook.com/cozinhasaopaulo" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/cozinhasaopaulo"><a href="https://www.facebook.com/cozinhasaopaulo">Cozinha São Paulo</a></blockquote></div></div>
+</template>
