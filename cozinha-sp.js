@@ -3,7 +3,7 @@ if (Meteor.isClient) {
 	Session.setDefault('card_hash', 0);
 	Session.setDefault('flash_message', {});
 
-	Template.hello.helpers({
+	Template.doacao.helpers({
 		card_hash: function () {
 			return Session.get('card_hash');
 		},
@@ -12,7 +12,7 @@ if (Meteor.isClient) {
 		}
 	});
 
-	Template.hello.events({
+	Template.doacao.events({
 		'submit #pagamento': function (evt) {
 			evt.preventDefault();
 			PagarMe.encryption_key = Meteor.settings.public.PagarMe.ENCRYPTION_KEY;
