@@ -1,6 +1,8 @@
 @import 'jeet'
 @import 'colors.import'
+
 global-reset()
+
 body
 	background-color: azul-claro
 	background-image: url('/images/bg.png')
@@ -10,8 +12,11 @@ body
 	font-weight: 400
 	color: branco
 	border: 1em solid branco
+
 p
 	line-height: 2em
+	margin-bottom: 3em
+
 h2
 	text-align: center
 	border-top: .2em solid rosa
@@ -21,6 +26,7 @@ h2
 	font-size: 1.1em
 	font-weight: 700
 	margin: 3em auto
+
 h3
 	font-weight: 700
 	text-transform: uppercase
@@ -28,15 +34,18 @@ h3
 
 .container
 	center(1280px)
+
 .row
 	col(1)
 	text-align: center
-.rodape
-	background-color: white
-	color: cinza
-	.titulo
-		color: rosa
-@import 'topo.import'
+
+// componentes
 @import 'grupo-destaques.import'
+@import 'chef-destaque.import'
+
+// módulos
+@import 'topo.import'
 @import 'cozinheiro-do-mes.import'
+@import 'proximo-cozinheiro.import'
 @import 'comunidade.import'
+@import 'rodape.import'
