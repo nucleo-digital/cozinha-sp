@@ -2,6 +2,7 @@ image: node:0.10
 env:
   - GOPATH=/var/cache/drone
 script:
+  - rm -rf /var/cache/drone/src/github.com/nucleo-digital/cozinha-sp
   - curl -o Meteor_install_script.sh https://install.meteor.com/
   - chmod +x Meteor_install_script.sh
   - sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" Meteor_install_script.sh
