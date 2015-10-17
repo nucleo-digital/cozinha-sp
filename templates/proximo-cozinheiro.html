@@ -1,7 +1,7 @@
 <template name="proximo_cozinheiro">
 	<h2>ajude o próximo cozinheiro a realizar seu sonho</h2>
-	<p>A cada mês, oferecemos a um jovem da periferia a chance de realizar o sonho de empreender no mundo da gastronomia e depois montar seu próprio negócio. Para que esse sonho seja possível, precisamos da sua ajuda.</p>
-	<p>Temos auxílio de doações e retorno das vendas de refeições, porém estão faltando 20% dos nossos custos mensais para fecharmos as contas. É aí que você entra!</p>
+	<p class="subtitulo">A cada mês, oferecemos a um jovem da periferia a chance de realizar o sonho de empreender no mundo da gastronomia e depois montar seu próprio negócio. Para que esse sonho seja possível, precisamos da sua ajuda.</p>
+	<p class="subtitulo">Temos auxílio de doações e retorno das vendas de refeições, porém estão faltando 20% dos nossos custos mensais para fecharmos as contas. É aí que você entra!</p>
 	<div class="meta-cozinheiro">
 		{{> meta_cozinheiro}}
 	</div>
@@ -17,15 +17,15 @@
 		<p>Lorem ipsum dolor sit met dolor sit lorem ipsum.</p>
 	</div>
 	<div class="progresso">
-		<div class="total">
-			<div class="alcancado">
-				<p><span>R$</span>1.200,00</p>
+		<div class="barra">
+			<div class="preenchido">
+				<p class="valor"><span>R$</span>1.200,00</p>
 			</div>
 		</div>
-		<p><span>R$</span>3.700,00</p>
+		<div class="objetivo"><p class="valor"><span>R$</span>3.700,00</p></div>
 	</div>
 
-	<p>Total alcançado até o momento</p>
+	<p class="legend">Total alcançado até o momento</p>
 </template>
 
 <template name="doacao">

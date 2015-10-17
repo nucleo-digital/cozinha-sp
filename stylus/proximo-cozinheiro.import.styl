@@ -1,0 +1,33 @@
+.proximo-cozinheiro
+	background-image: url('/images/bg-destaque.svg')
+	background-position: 50% 55%
+	background-repeat: no-repeat
+	background-size: 90%
+	.progresso
+		center(75%)
+		p
+			font-weight: 400
+			font-size: 2.2em
+			line-height: 1em
+			margin-bottom: 0
+			padding: .2em 0
+			span
+				font-size: 65%
+		.barra
+			col(10/12)
+			background-image: repeating-linear-gradient(
+				135deg,
+				rosa,
+				rosa .35em,
+				rgba(255,255,255,.75) .35em,
+				rgba(255,255,255,.75) .4em /* determines size */
+			)
+			.preenchido
+				width:30%
+				background-color: rosa-escuro
+				p
+					text-align: right
+					font-size: 1.5em
+					padding: .5em 1em
+		.objetivo
+			col(2/12)
