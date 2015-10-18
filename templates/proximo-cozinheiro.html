@@ -35,56 +35,45 @@
 	<form id="pagamento">
   		{{> alert data=flash_message}}
 		<fieldset id="dados_do_apoiador" class="">
-			<legend>Dados do apoiador</legend>
+			<legend>preencha seus dados pessoais</legend>
 			<div class="input text">
-				<label for="customer_name">Nome:</label>
-				<input type="text" name="customer_name">
+				<input type="text" name="customer_name" placeholder="Nome" size=47>
 			</div>
 			<div class="input text">
-				<label for="customer_document_number">Número documento</label>
-				<input type="text" name="customer_document_number">
+				<input type="text" name="customer_document_number" placeholder="CPF" size=15>
 			</div>
 			<div class="input text">
-				<label for="customer_email">E-mail</label>
-				<input type="text" name="customer_email">
+				<input type="text" name="customer_email" placeholder="E-mail" size="30">
 			</div>
 			<div class="input text">
-				<label for="customer_born_at">Data de nascimento</label>
-				<input type="text" name="customer_born_at">
+				<input type="text" name="customer_address_street" placeholder="Endereco" size=40>
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_address_neighborhood" placeholder="Bairro">
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15>
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_address_street_number" placeholder="Número" size=10>
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_address_complementary" placeholder="Complemento">
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_phone_ddd" placeholder="DDD" size=10>
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_phone_number" placeholder="Telefone">
+			</div>
+			<div class="input text">
+				<input type="text" name="customer_born_at" placeholder="Data de nascimento">
 			</div>
 			<div class="input radio">
 				<label for="customer_gender"></label>
 				<input type="radio" name="customer_gender" value="m">Masculino
 				<input type="radio" name="customer_gender" value="f">Feminino
 
-			</div>
-			<div class="input text">
-				<label for="customer_address_street">Endereço</label>
-				<input type="text" name="customer_address_street">
-			</div>
-			<div class="input text">
-				<label for="customer_adress_neighborhood">Bairro</label>
-				<input type="text" name="customer_address_neighborhood">
-			</div>
-			<div class="input text">
-				<label for="customer_address_zipcode">CEP</label>
-				<input type="text" name="customer_address_zipcode">
-			</div>
-			<div class="input text">
-				<label for="customer_address_street_number">Número</label>
-				<input type="text" name="customer_address_street_number">
-			</div>
-			<div class="input text">
-				<label for="customer_address_complementary">Complemento</label>
-				<input type="text" name="customer_address_complementary">
-			</div>
-			<div class="input text">
-				<label for="customer_phone_ddd">DDD telefone:</label>
-				<input type="text" name="customer_phone_ddd">
-			</div>
-			<div class="input text">
-				<label for="customer_phone_number">Número telefone</label>
-				<input type="text" name="customer_phone_number">
 			</div>
 		</fieldset>
 		<fieldset>
@@ -98,11 +87,11 @@
 					<option value="21693">Ideal 2</option>
 				</select>
 			</div>
-			<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number"/></div>
-			<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name"/></div>
-			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month"/></div>
-			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year"/></div>
-			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv"/></div>
+			<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number" placeholder=""/></div>
+			<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name" placeholder=""/></div>
+			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month" placeholder=""/></div>
+			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year" placeholder=""/></div>
+			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv" placeholder=""/></div>
 		</fieldset>
 		<div id="field_errors">
 		</div>
