@@ -1,3 +1,9 @@
+@keyframes moving-gradient
+	0%
+		background-position: 100px 0
+	100%
+		background-position: 0 0
+
 .proximo-cozinheiro .perfil
 	background-image: url('/images/bg-destaque.svg')
 	background-position: 50% 100%
@@ -22,6 +28,10 @@
 				rgba(255,255,255,.75) .35em,
 				rgba(255,255,255,.75) .4em /* determines size */
 			)
+			animation-name: moving-gradient
+			animation-duration: 7s
+			animation-iteration-count: infinite
+			animation-timing-function: linear
 			.preenchido
 				width:30%
 				background-color: rosa-escuro
@@ -49,14 +59,18 @@
 			mask-size: cover
 			&:hover
 				animation: pulse 1s
+	form
+		position: relative
+		z-index: -2
 	fieldset
 		position: relative
 		z-index: -1
-		margin-top: -5em
+		margin: -5em auto 3em
 		background-color: white
 		mask-image: url('/images/bg-big-poligono-mask.svg')
 		mask-size: cover
-		padding: 8em
+		width: 90%
+		padding: 8em 6em
 		color: cinza
 		legend
 			font-weight: 400
@@ -70,3 +84,7 @@
 		.input
 			float: left
 			margin: 0 1em 1em 0
+		.submit
+			width: 100%
+			text-align: center
+

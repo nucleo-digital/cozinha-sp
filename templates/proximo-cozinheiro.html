@@ -32,17 +32,17 @@
 
 <template name="doacao">
 	<h4>Ser um doador recorrente AINDA te dá o direito a um brinde exclusivo. Escolha o valor da sua assinatura mensal:</h4>
-	<form id="pagamento">
-		<div class="planos">
-			{{#each planos}}
-			<a class="plano {{name}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
-					R$ {{valor}}
-				</a>
-			{{/each}}
-		</div>
-  		{{> alert data=flash_message}}
-		<fieldset id="dados_do_apoiador" class="">
+	<div class="planos">
+		{{#each planos}}
+		<a class="plano {{name}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
+			R$ {{valor}}
+		</a>
+		{{/each}}
+	</div>
+	<form id="dados_pessoais_apoiador">
+		<fieldset>
 			<legend>preencha seus dados pessoais</legend>
+			{{> alert data=flash_message}}
 			<div class="input text">
 				<input type="text" name="customer_name" placeholder="Nome" size=47>
 			</div>
@@ -82,9 +82,15 @@
 				<input type="radio" name="customer_gender" value="f">Feminino
 
 			</div>
+			<div class="clear"></div>
+			<div class="input submit">
+				<input type="submit" value="prosseguir">
+			</div>
 		</fieldset>
+	</form>
+	<form id="dados_pagamento_apoiador" style="display: none;">
 		<fieldset>
-			<legend>Dados do cartão</legend>
+			<legend>dados de pagamento</legend>
 			<div class="input text">
 				<label>Plano:</label>
 				<select name="plan_id">
@@ -99,9 +105,7 @@
 			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month" placeholder=""/></div>
 			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year" placeholder=""/></div>
 			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv" placeholder=""/></div>
+			<input type="submit">
 		</fieldset>
-		<div id="field_errors">
-		</div>
-		<input type="submit">
 	</form>
 </template>
