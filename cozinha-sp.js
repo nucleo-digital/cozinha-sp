@@ -1,4 +1,7 @@
 if (Meteor.isClient) {
+Meteor.startup(function() {
+   $('html').attr('lang', 'pt-BR');
+});
   // counter starts at 0
 	Session.setDefault('card_hash', 0);
 	Session.setDefault('flash_message', {});

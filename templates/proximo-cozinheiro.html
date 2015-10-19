@@ -39,48 +39,47 @@
 		</a>
 		{{/each}}
 	</div>
-	<form id="dados_pessoais_apoiador">
+	<form id="dados_pessoais_apoiador" novalidate>
 		<fieldset>
 			<legend>preencha seus dados pessoais</legend>
 			{{> alert data=flash_message}}
 			<div class="input text">
-				<input type="text" name="customer_name" placeholder="Nome" size=47>
+				<input type="text" name="customer_name" placeholder="Nome" size=47 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_document_number" placeholder="CPF" size=15>
+				<input type="email" name="customer_email" placeholder="E-mail" size="30" required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_email" placeholder="E-mail" size="30">
+				<input type="text" name="customer_document_number" placeholder="CPF" size=15 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_address_street" placeholder="Endereco" size=40>
+				<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_address_neighborhood" placeholder="Bairro">
+				<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15>
+				<input type="text" name="customer_address_neighborhood" placeholder="Bairro" required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_address_street_number" placeholder="Número" size=10>
+				<input type="number" name="customer_address_street_number" placeholder="Número" size=10 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_address_complementary" placeholder="Complemento">
+				<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_phone_ddd" placeholder="DDD" size=10>
+				<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento">
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_phone_number" placeholder="Telefone">
+				<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required>
 			</div>
 			<div class="input text">
-				<input type="text" name="customer_born_at" placeholder="Data de nascimento">
+				<input type="number" name="customer_phone_number" placeholder="Telefone" required>
 			</div>
 			<div class="input radio">
-				<label for="customer_gender"></label>
+				<label for="customer_gender">Gênero</label>
 				<input type="radio" name="customer_gender" value="m">Masculino
 				<input type="radio" name="customer_gender" value="f">Feminino
-
 			</div>
 			<div class="clear"></div>
 			<div class="input submit">
@@ -88,7 +87,7 @@
 			</div>
 		</fieldset>
 	</form>
-	<form id="dados_pagamento_apoiador" style="display: none;">
+	<form id="dados_pagamento_apoiador" style="display: none;" novalidate>
 		<fieldset>
 			<legend>dados de pagamento</legend>
 			<div class="input text">

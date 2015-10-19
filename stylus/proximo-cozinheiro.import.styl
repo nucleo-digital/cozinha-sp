@@ -45,6 +45,8 @@
 .proximo-cozinheiro .doacao
 	.planos
 		.plano
+			position: relative
+			z-index: 2
 			color: white
 			display: inline-block
 			width: 5.3em
@@ -59,18 +61,15 @@
 			mask-size: cover
 			&:hover
 				animation: pulse 1s
-	form
-		position: relative
-		z-index: -2
 	fieldset
 		position: relative
-		z-index: -1
+		z-index: 1
 		margin: -5em auto 3em
 		background-color: white
 		mask-image: url('/images/bg-big-poligono-mask.svg')
 		mask-size: cover
 		width: 90%
-		padding: 8em 6em
+		padding: 6em 6em 0
 		color: cinza
 		legend
 			font-weight: 400
@@ -79,12 +78,29 @@
 			margin-top: 3em
 			margin-bottom: 3em
 			text-transform: uppercase
+		label
+			display: block
+			text-align: left
+			font-weight: 400
+			text-transform: uppercase
+			margin: .5em 0
 		input
+			font-family: Roboto
+			color: darken(cinza, 30%)
 			border: .1em solid cinza-claro
+			&[name=customer_address_street_number],
+			&[name=customer_phone_ddd]
+				width: 7.5em
+			&[name=customer_phone_number]
+				width: 10em
+			&[name=customer_born_at]
+				max-height: 3.3em
 		.input
 			float: left
 			margin: 0 1em 1em 0
 		.submit
 			width: 100%
 			text-align: center
-
+			margin: 3em 0
+			input
+				color: white
