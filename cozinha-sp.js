@@ -38,10 +38,10 @@ if (Meteor.isClient) {
 	});
 
 	var trocar_plano = function (plano_id) {
-			if (plano_id === 'outro-valor') {
+			if (plano_id === 'outro-valor') { // ativa plano para planos maiores
 				Session.set('is_outro_plano_visible', true);
 				Session.set('plano_ativo', 0);
-			} else if (plano_id === 0) {
+			} else if (plano_id === 0) { // desativa área de planos
 				Session.set('is_outro_plano_visible', false);
 				Session.set('plano_ativo', 0);
 			} else if (_.isNumber(parseInt(plano_id))) { // ativa plano no array de planos
