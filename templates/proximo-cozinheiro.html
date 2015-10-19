@@ -33,6 +33,13 @@
 <template name="doacao">
 	<h4>Ser um doador recorrente AINDA te dá o direito a um brinde exclusivo. Escolha o valor da sua assinatura mensal:</h4>
 	<form id="pagamento">
+		<div class="planos">
+			{{#each planos}}
+			<a class="plano {{name}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
+					R$ {{valor}}
+				</a>
+			{{/each}}
+		</div>
   		{{> alert data=flash_message}}
 		<fieldset id="dados_do_apoiador" class="">
 			<legend>preencha seus dados pessoais</legend>

@@ -7,6 +7,14 @@ if (Meteor.isClient) {
 		card_hash: function () {
 			return Session.get('card_hash');
 		},
+		planos: function () {
+			return [
+				{name: 'Ideal 2',  id: 21693, valor: 40.00, color: 'rgb(38, 53,  96)'},
+				{name: 'Ideal',    id: 21692, valor: 30.00, color: 'rgb(53, 68,  142)'},
+				{name: 'Mínimo 2', id: 21691, valor: 20.00, color: 'rgb(32, 63,  44)'},
+				{name: 'Mínimo',   id: 21690, valor: 10.00, color: 'rgb(27, 102, 64)'}
+			]
+		},
 		flash_message: function () {
 			return Session.get('flash_message');
 		}

@@ -31,8 +31,28 @@
 					padding: .5em 1em
 		.objetivo
 			col(2/12)
+
 .proximo-cozinheiro .doacao
+	.planos
+		.plano
+			color: white
+			display: inline-block
+			width: 5.3em
+			height: 5.3em
+			margin: 0 1em
+			font-size: 2em
+			font-weight: 400
+			line-height: 5.3em
+			vertical-align: middle
+			text-decoration: none
+			mask-image: url('/images/bg-circle-mask.svg')
+			mask-size: cover
+			&:hover
+				animation: pulse 1s
 	fieldset
+		position: relative
+		z-index: -1
+		margin-top: -5em
 		background-color: white
 		mask-image: url('/images/bg-big-poligono-mask.svg')
 		mask-size: cover
