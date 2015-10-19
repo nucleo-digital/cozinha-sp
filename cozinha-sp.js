@@ -1,12 +1,26 @@
 if (Meteor.isClient) {
-Meteor.startup(function() {
-   $('html').attr('lang', 'pt-BR');
-});
-  // counter starts at 0
+	Meteor.startup(function() {
+		$('html').attr('lang', 'pt-BR');
+	});
+
 	Session.setDefault('card_hash', 0);
 	Session.setDefault('flash_message', {});
+	Session.setDefault('page_name', 'vazia');
+	Session.setDefault('plano_ativo', 0);
+	Session.setDefault('form_details_validate', false);
 
 	Template.doacao.helpers({
+		plano_ativo: function () {
+			return Session.get('plano_ativo');
+		},
+		is_outro_plano_visible: function () {
+			return Session.get('is_outro_plano_visible');
+		},
+		is_form_details_validate: function () {
+			return Session.get('form_details_validate');
+		},
+
+		// integracao pagar.me
 		card_hash: function () {
 			return Session.get('card_hash');
 		},
@@ -23,7 +37,29 @@ Meteor.startup(function() {
 		}
 	});
 
+	var trocar_plano = function (plano_id) {
+			if (plano_id === 'outro-valor') {
+				Session.set('is_outro_plano_visible', true);
+				Session.set('plano_ativo', 0);
+			} else if (plano_id === 0) {
+				Session.set('is_outro_plano_visible', false);
+				Session.set('plano_ativo', 0);
+			} else if (_.isNumber(parseInt(plano_id))) { // ativa plano no array de planos
+				Session.set('is_outro_plano_visible', false);
+				Session.set('plano_ativo', plano_id);
+			}
+	};
+
 	Template.doacao.events({
+		'click #cancelar': function(evt) {
+			trocar_plano(0);
+			return false;
+		},
+		'click .plano': function(evt) {
+			var plano_id = evt.target.id;
+			trocar_plano(plano_id);
+			return false;
+		},
 		'submit #pagamento': function (evt) {
 			evt.preventDefault();
 			PagarMe.encryption_key = Meteor.settings.public.PagarMe.ENCRYPTION_KEY;

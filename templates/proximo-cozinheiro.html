@@ -38,73 +38,89 @@
 			R$ {{valor}}
 		</a>
 		{{/each}}
+		<a class="plano outro" id="outro-valor" style="background-color: rgb(103, 58, 142)" href="/plano-outro-valor">
+			escolha outro valor
+		</a>
 	</div>
-	<form id="dados_pessoais_apoiador" novalidate>
-		<fieldset>
-			<legend>preencha seus dados pessoais</legend>
-			{{> alert data=flash_message}}
-			<div class="input text">
-				<input type="text" name="customer_name" placeholder="Nome" size=47 required>
-			</div>
-			<div class="input text">
-				<input type="email" name="customer_email" placeholder="E-mail" size="30" required>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_document_number" placeholder="CPF" size=15 required>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_address_neighborhood" placeholder="Bairro" required>
-			</div>
-			<div class="input text">
-				<input type="number" name="customer_address_street_number" placeholder="Número" size=10 required>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15>
-			</div>
-			<div class="input text">
-				<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento">
-			</div>
-			<div class="input text">
-				<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required>
-			</div>
-			<div class="input text">
-				<input type="number" name="customer_phone_number" placeholder="Telefone" required>
-			</div>
-			<div class="input radio">
-				<label for="customer_gender">Gênero</label>
-				<input type="radio" name="customer_gender" value="m">Masculino
-				<input type="radio" name="customer_gender" value="f">Feminino
-			</div>
-			<div class="clear"></div>
-			<div class="input submit">
-				<input type="submit" value="prosseguir">
-			</div>
+	{{#if is_form_details_validate}}
+		<form id="dados_pagamento_apoiador" style="display: none;" novalidate>
+			<fieldset>
+				<legend>dados de pagamento</legend>
+				<div class="input text">
+					<label>Plano:</label>
+					<select name="plan_id">
+						<option value="21690">Mínimo</option>
+						<option value="21691">Mínimo 2</option>
+						<option value="21692">Ideal</option>
+						<option value="21693">Ideal 2</option>
+					</select>
+				</div>
+				<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number" placeholder=""/></div>
+				<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name" placeholder=""/></div>
+				<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month" placeholder=""/></div>
+				<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year" placeholder=""/></div>
+				<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv" placeholder=""/></div>
+				<input type="submit">
+			</fieldset>
+		</form>
+	{{else}}
+		{{#if plano_ativo}}
+		<form id="dados_pessoais_apoiador" novalidate>
+			<fieldset class="fadeIn animated">
+				<legend>preencha seus dados pessoais</legend>
+				{{> alert data=flash_message}}
+				<div class="input text">
+					<input type="text" name="customer_name" placeholder="Nome" size=47 required>
+				</div>
+				<div class="input text">
+					<input type="email" name="customer_email" placeholder="E-mail" size="30" required>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_document_number" placeholder="CPF" size=15 required>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_address_neighborhood" placeholder="Bairro" required>
+				</div>
+				<div class="input text">
+					<input type="number" name="customer_address_street_number" placeholder="Número" size=10 required>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15>
+				</div>
+				<div class="input text">
+					<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento">
+				</div>
+				<div class="input text">
+					<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required>
+				</div>
+				<div class="input text">
+					<input type="number" name="customer_phone_number" placeholder="Telefone" required>
+				</div>
+				<div class="input radio">
+					<label for="customer_gender">Gênero</label>
+					<input type="radio" name="customer_gender" value="m">Masculino
+					<input type="radio" name="customer_gender" value="f">Feminino
+				</div>
+				<div class="clear"></div>
+				<div class="input submit">
+					<button class="secondary" id="cancelar">cancelar</button>
+					<input type="submit" value="prosseguir">
+				</div>
+			</fieldset>
+		</form>
+		{{/if}}
+	{{/if}}
+	{{#if is_outro_plano_visible}}
+	<form>
+		<fieldset id="veja_como_prosseguir" class="">
+			<legend>Veja como prosseguir</legend>
 		</fieldset>
 	</form>
-	<form id="dados_pagamento_apoiador" style="display: none;" novalidate>
-		<fieldset>
-			<legend>dados de pagamento</legend>
-			<div class="input text">
-				<label>Plano:</label>
-				<select name="plan_id">
-					<option value="21690">Mínimo</option>
-					<option value="21691">Mínimo 2</option>
-					<option value="21692">Ideal</option>
-					<option value="21693">Ideal 2</option>
-				</select>
-			</div>
-			<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number" placeholder=""/></div>
-			<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name" placeholder=""/></div>
-			<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month" placeholder=""/></div>
-			<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year" placeholder=""/></div>
-			<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv" placeholder=""/></div>
-			<input type="submit">
-		</fieldset>
-	</form>
+	{{/if}}
 </template>
