@@ -113,6 +113,10 @@ if (Meteor.isClient) {
 	};
 
 	Template.doacao.events({
+		'click #voltar': function(evt) {
+			Session.set('is_form_details_validate', false);
+			return false;
+		},
 		'click #cancelar': function(evt) {
 			trocar_plano(0);
 			return false;
@@ -170,15 +174,12 @@ if (Meteor.isClient) {
 			isValid = context.validate(customer);
 
 			if (!isValid) {
-//				Tracker.autorun(function() {
 					console.log(context.invalidKeys());
-//				});
 			} else {
-				console.log('form valido');
 				Session.set('is_form_details_validate', 'valido');
 			}
 		},
-		'submit #pagamento': function (evt) {
+		'submit #dados_pagamento_apoiador': function (evt) {
 			evt.preventDefault();
 			PagarMe.encryption_key = Meteor.settings.public.PagarMe.ENCRYPTION_KEY;
 			var creditCard = new PagarMe.creditCard();
@@ -235,7 +236,7 @@ if (Meteor.isClient) {
 					Meteor.call('assinar_plano', plan_id, cardHash, customer, address, phone, function(err, results) {
 						if ( (typeof err === undefined) && (results.statusCode === 200) ) {
 							Session.set('flash_message', {
-								className: 'alert-success alert',
+								className: 'alert success',
 								text:'Assinatura realizada com sucesso.'
 							});
 						} else {
@@ -245,7 +246,7 @@ if (Meteor.isClient) {
 							// 	stringErrors.push(results.errors[field].message);
 							// }
 							Session.set('flash_message', {
-								className: 'alert-success alert',
+								className: 'alert error',
 								text:'Falha ao tentar realizar a assinatura.' + stringErrors.join(" - ")
 							});
 						}
