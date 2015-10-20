@@ -43,28 +43,25 @@
 			escolha outro valor
 		</a>
 	</div>
+
 	{{#if is_form_details_validate}}
-		<form id="dados_pagamento_apoiador" style="display: none;" novalidate>
+		<form id="dados_pagamento_apoiador" novalidate>
 			<fieldset>
 				<legend>dados de pagamento</legend>
-				<div class="input text">
-					<label>Plano:</label>
-					<select name="plan_id">
-						<option value="21690">Mínimo</option>
-						<option value="21691">Mínimo 2</option>
-						<option value="21692">Ideal</option>
-						<option value="21693">Ideal 2</option>
-					</select>
+				<input type="hidden" name="plan_id" />
+				<div class="input text"><input type="text" name="card_holder_name" placeholder="Nome (como escrito no cartão)" size=98 /></div>
+				<div class="input text"><input type="text" name="card_number" placeholder="Número do cartão" size=98 /></div>
+				<div class="input text"><input type="text" name="card_expiration_month" placeholder="Mês de expiração" size=28 /></div>
+				<div class="input text"><input type="text" name="card_expiration_year" placeholder="Ano de expiração" size=28 /></div>
+				<div class="input text"><input type="text" name="card_cvv" placeholder="Código de segurança" size=28 /></div>
+				<div class="input submit">
+					<button id="voltar" class="secondary">voltar</button>
+					<input type="submit" value="concluir assinatura">
 				</div>
-				<div class="input text"><label>Número do cartão:</label> <input type="text" name="card_number" placeholder=""/></div>
-				<div class="input text"><label>Nome (como escrito no cartão): </label><input type="text" name="card_holder_name" placeholder=""/></div>
-				<div class="input text"><label>Mês de expiração: </label><input type="text" name="card_expiration_month" placeholder=""/></div>
-				<div class="input text"><label>Ano de expiração: </label><input type="text" name="card_expiration_year" placeholder=""/></div>
-				<div class="input text"><label>Código de segurança: </label><input type="text" name="card_cvv" placeholder=""/></div>
-				<input type="submit">
 			</fieldset>
 		</form>
 	{{else}}
+
 		{{#if plano_ativo}}
 		<form id="dados_pessoais_apoiador" novalidate>
 			<fieldset class="fadeIn animated">
