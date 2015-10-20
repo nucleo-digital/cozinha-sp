@@ -15,7 +15,7 @@ body
 	background-position: 50% -17%
 	background-repeat: no-repeat
 	font-family: 'Roboto', sans-serif
-	font-weight: 100
+	font-weight: 400
 	color: branco
 	border: 1em solid branco
 
@@ -33,11 +33,11 @@ h2
 	text-align: center
 	border-top: .2em solid rosa
 	display: inline-block
-	padding: 1em .5em 0
+	padding: 1em 0
 	text-transform: uppercase
 	font-size: 1.2em
 	font-weight: 700
-	margin: 3em auto
+	margin: 4em auto
 
 h3
 	font-weight: 700
@@ -74,6 +74,20 @@ button
 	clearfix()
 
 .parceiros
+	position: relative;
+	&:after
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+		border-color: rgba(84, 194, 189, 0);
+		border-top-color: #54C2BD;
+		border-width: 20px;
+		margin-left: -20px;
 	img
 		max-width: 90%
 		margin: 0 0 6em
