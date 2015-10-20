@@ -1,13 +1,41 @@
+var timer = 0;
+var INITIAL_INTERVAL = 60;
+var META_TOTAL = 1000.00;
 if (Meteor.isClient) {
-	Meteor.startup(function() {
-		$('html').attr('lang', 'pt-BR');
-	});
-
 	Session.setDefault('card_hash', 0);
 	Session.setDefault('flash_message', {});
 	Session.setDefault('page_name', 'vazia');
 	Session.setDefault('plano_ativo', 0);
+	Session.setDefault('timer_atualizar_meta', INITIAL_INTERVAL);
+	Session.setDefault('progresso_meta', { 'alcancado': 10.00, 'total': META_TOTAL, porcentagem: 10});
 	Session.setDefault('form_details_validate', false);
+	Meteor.startup(function() {
+		$('html').attr('lang', 'pt-BR');
+	});
+
+	Meteor.setInterval(function () {
+		if (timer === 0) {
+			timer = INITIAL_INTERVAL;
+			Meteor.call('total_arrecadado', function(err, results) {
+				let alcancado = results.data.available.amount;
+				let porcentagem = (META_TOTAL/100)*alcancado*100;
+				Session.set('progresso_meta', { 'alcancado': alcancado, 'total': META_TOTAL, porcentagem: porcentagem});
+			});
+		} else {
+			timer--;
+		}
+		Session.set('timer_atualizar_meta', timer);
+	}, 1000)
+
+	Template.meta_cozinheiro.helpers({
+		timer_atualizar_meta: function () {
+			return Session.get('timer_atualizar_meta');
+		},
+		progresso_meta: function () {
+			return Session.get('progresso_meta');
+		}
+	});
+
 
 	Template.doacao.helpers({
 		plano_ativo: function () {
@@ -153,6 +181,9 @@ Meteor.methods({
 					})
 				}
 			});
+	},
+	'total_arrecadado': function() {
+		return HTTP.call("GET", "https://api.pagar.me/1/balance", {data: {api_key: Meteor.settings.PagarMe.API_KEY}});
 	}
 });
 

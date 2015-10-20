@@ -20,14 +20,15 @@
 	</div>
 	<div class="progresso">
 		<div class="barra">
-			<div class="preenchido">
-				<p class="valor"><span>R$</span>1.200,00</p>
+			<div class="preenchido" style="width: {{progresso_meta.porcentagem}}%;">
+
+				<p class="valor"><span>R$</span>{{progresso_meta.alcancado}}</p>
 			</div>
 		</div>
-		<div class="objetivo"><p class="valor"><span>R$</span>3.700,00</p></div>
+		<div class="objetivo"><p class="valor"><span>R$</span>{{progresso_meta.total}}</p></div>
 	</div>
 
-	<p class="legend">Total alcançado até o momento</p>
+	<p class="legend">Total alcançado até o momento. - Próxima atualizacão da meta em {{timer_atualizar_meta}} segundos.</p>
 </template>
 
 <template name="doacao">
