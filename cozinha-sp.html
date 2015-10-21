@@ -18,8 +18,10 @@
 </body>
 <template name="alert">
 	{{#if data}}
-		<div class="alerta {{data.className}}">
-			{{data.text}}
-		</div>
+	<ul class="alert {{data.className}}">
+		{{#each data.messages}}
+			<li>{{text}}</li>
+		{{/each}}
+	</ul>
 	{{/if}}
 </template>

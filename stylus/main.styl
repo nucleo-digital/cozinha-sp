@@ -92,6 +92,28 @@ button
 		max-width: 90%
 		margin: 0 0 6em
 
+fieldset
+	ul.alert
+		clearfix()
+		li
+			col(1/3)
+			height: 3em
+			padding: .5em
+			margin: 0 .5em .5em 0
+			text-align: left
+		&.error li
+			background-color: #f2dede
+			border-left: .5em solid #b94a48
+			color: #b94a48
+		&.success li
+			background-color: #dff0d8
+			border-left: .5em solid #468847
+			color: #468847
+		&.atention li
+			background-color: #fcf8e3
+			border-left: .5em solid #c09853
+			color: #c09853
+
 // componentes
 @import 'grupo-destaques.import'
 @import 'chef-destaque.import'

@@ -45,8 +45,8 @@
 		<form id="dados_pagamento_apoiador" novalidate>
 			<fieldset>
 				<legend>dados de pagamento</legend>
-				<input type="hidden" name="plan_id" />
-				<div class="input text"><input type="text" name="card_holder_name" placeholder="Nome (como escrito no cartão)" size=98 /></div>
+				{{> alert data=flash_message}}
+				<div class="input text"><input type="text" name="card_holder_name" placeholder="Nome do portador (como escrito no cartão)" size=98 /></div>
 				<div class="input text"><input type="text" name="card_number" placeholder="Número do cartão" size=98 /></div>
 				<div class="input text"><input type="text" name="card_expiration_month" placeholder="Mês de expiração" size=28 /></div>
 				<div class="input text"><input type="text" name="card_expiration_year" placeholder="Ano de expiração" size=28 /></div>
@@ -66,55 +66,57 @@
 			</fieldset>
 		</form>
 		{{else}}
-		<form id="dados_pessoais_apoiador" novalidate>
-			<fieldset class="fadeIn animated">
-				<legend>preencha seus dados pessoais</legend>
-				{{> alert data=flash_message}}
-				<div class="input text">
-					<input type="text" name="customer_name" placeholder="Nome" size=47 required>
-				</div>
-				<div class="input text">
-					<input type="email" name="customer_email" placeholder="E-mail" size="30" required>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_document_number" placeholder="CPF" size=15 required>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_address_neighborhood" placeholder="Bairro" required>
-				</div>
-				<div class="input text">
-					<input type="number" name="customer_address_street_number" placeholder="Número" size=10 required>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15>
-				</div>
-				<div class="input text">
-					<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento">
-				</div>
-				<div class="input text">
-					<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required>
-				</div>
-				<div class="input text">
-					<input type="number" name="customer_phone_number" placeholder="Telefone" required>
-				</div>
-				<div class="input radio">
-					<label for="customer_gender">Gênero</label>
-					<input type="radio" name="customer_gender" value="m">Masculino
-					<input type="radio" name="customer_gender" value="f">Feminino
-				</div>
-				<div class="clear"></div>
-				<div class="input submit">
-					<button class="secondary" id="cancelar">cancelar</button>
-					<input type="submit" value="prosseguir">
-				</div>
-			</fieldset>
-		</form>
+			{{#if plano_ativo}}
+			<form id="dados_pessoais_apoiador" novalidate>
+				<fieldset class="fadeIn animated">
+					<legend>preencha seus dados pessoais</legend>
+					{{> alert data=flash_message}}
+					<div class="input text">
+						<input type="text" name="customer_name" placeholder="Nome" size=47 required value={{dados_doacao.name}}>
+					</div>
+					<div class="input text">
+						<input type="email" name="customer_email" placeholder="E-mail" size="30" required value="{{dados_doacao.email}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_document_number" placeholder="CPF" size=15 required value="{{dados_doacao.document_number}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required value="{{dados_doacao.address.zipcode}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required value="{{dados_doacao.address.street}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_address_neighborhood" placeholder="Bairro" required value="{{dados_doacao.address.neighborhood}}">
+					</div>
+					<div class="input text">
+						<input type="number" name="customer_address_street_number" placeholder="Número" size=10 required value="{{dados_doacao.address.street_number}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15 value="{{dados_doacao.address.complementary}}">
+					</div>
+					<div class="input text">
+						<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento" value="{{dados_doacao.born_at}}">
+					</div>
+					<div class="input text">
+						<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required value="{{dados_doacao.phone.ddd}}">
+					</div>
+					<div class="input text">
+						<input type="number" name="customer_phone_number" placeholder="Telefone" required value="{{dados_doacao.phone.number}}">
+					</div>
+					<div class="input radio">
+						<label for="customer_gender">Gênero</label>
+						<input type="radio" name="customer_gender" value="M">Masculino
+						<input type="radio" name="customer_gender" value="F">Feminino
+					</div>
+					<div class="clear"></div>
+					<div class="input submit">
+						<button class="secondary" id="cancelar">cancelar</button>
+						<input type="submit" value="prosseguir">
+					</div>
+				</fieldset>
+			</form>
+			{{/if}}
 		{{/if}}
 	{{/if}}
 </template>
