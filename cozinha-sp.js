@@ -74,12 +74,12 @@ if (Meteor.isClient) {
 	Meteor.setInterval(function () {
 		if (timer === 0) {
 			timer = INITIAL_INTERVAL;
-			Meteor.call('total_arrecadado', function(err, results) {
-				let alcancado = results.data.available.amount;
-				let waiting_funds = results.data.waiting_funds.amount;
-				let porcentagem = (((META_TOTAL/100)*(alcancado+waiting_funds))*100);
-				Session.set('progresso_meta', { 'alcancado': alcancado+waiting_funds, 'total': META_TOTAL, porcentagem: porcentagem});
-			});
+			// Meteor.call('total_arrecadado', function(err, results) {
+			// 	let alcancado = results.data.available.amount;
+			// 	let waiting_funds = results.data.waiting_funds.amount;
+			// 	let porcentagem = (((META_TOTAL/100)*(alcancado+waiting_funds))*100);
+			// 	Session.set('progresso_meta', { 'alcancado': alcancado+waiting_funds, 'total': META_TOTAL, porcentagem: porcentagem});
+			// });
 		} else {
 			timer--;
 		}
