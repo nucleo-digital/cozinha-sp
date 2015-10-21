@@ -35,13 +35,10 @@
 	<h4>Ser um doador recorrente AINDA te dá o direito a um brinde exclusivo. Escolha o valor da sua assinatura mensal:</h4>
 	<div class="planos">
 		{{#each planos}}
-		<a class="plano {{name}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
-			R$ {{valor}}
+		<a class="plano {{name}} {{#if active}}ativo{{/if}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
+			{{valor}}
 		</a>
 		{{/each}}
-		<a class="plano outro" id="outro-valor" style="background-color: rgb(103, 58, 142)" href="/plano-outro-valor">
-			escolha outro valor
-		</a>
 	</div>
 
 	{{#if is_form_details_validate}}
@@ -62,7 +59,13 @@
 		</form>
 	{{else}}
 
-		{{#if plano_ativo}}
+		{{#if is_outro_plano_visible}}
+		<form>
+			<fieldset id="veja_como_prosseguir" class="fadeIn animated">
+				<legend>Veja como prosseguir</legend>
+			</fieldset>
+		</form>
+		{{else}}
 		<form id="dados_pessoais_apoiador" novalidate>
 			<fieldset class="fadeIn animated">
 				<legend>preencha seus dados pessoais</legend>
@@ -113,12 +116,5 @@
 			</fieldset>
 		</form>
 		{{/if}}
-	{{/if}}
-	{{#if is_outro_plano_visible}}
-	<form>
-		<fieldset id="veja_como_prosseguir" class="fadeIn animated">
-			<legend>Veja como prosseguir</legend>
-		</fieldset>
-	</form>
 	{{/if}}
 </template>

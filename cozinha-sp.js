@@ -42,6 +42,13 @@ if (Meteor.isClient) {
 	Session.setDefault('timer_atualizar_meta', INITIAL_INTERVAL);
 	Session.setDefault('progresso_meta', { 'alcancado': 10.00, 'total': META_TOTAL, porcentagem: 10});
 	Session.setDefault('is_form_details_validate', false);
+	Session.setDefault('planos', [
+		{name: 'minimo',   id: 21690,        valor: 'R$ 10.00', color: 'rgb(27, 102, 64)', active: false},
+		{name: 'minimo-2', id: 21691,        valor: 'R$ 20.00', color: 'rgb(32, 63,  44)', active: false},
+		{name: 'ideal',    id: 21692,        valor: 'R$ 30.00', color: 'rgb(53, 68,  142)', active: false},
+		{name: 'ideal-2',  id: 21693,        valor: 'R$ 40.00', color: 'rgb(38, 53,  96)', active: false},
+		{name: 'outro',    id: 'outro-valor', valor: 'escolha outro valor', color: 'rgb(103, 58, 142)', active: false}
+	]);
 	Meteor.startup(function() {
 		$('html').attr('lang', 'pt-BR');
 	});
@@ -87,29 +94,36 @@ if (Meteor.isClient) {
 			return Session.get('card_hash');
 		},
 		planos: function () {
-			return [
-				{name: 'Ideal 2',  id: 21693, valor: 40.00, color: 'rgb(38, 53,  96)'},
-				{name: 'Ideal',    id: 21692, valor: 30.00, color: 'rgb(53, 68,  142)'},
-				{name: 'Mínimo 2', id: 21691, valor: 20.00, color: 'rgb(32, 63,  44)'},
-				{name: 'Mínimo',   id: 21690, valor: 10.00, color: 'rgb(27, 102, 64)'}
-			]
+			return Session.get('planos');
 		},
 		flash_message: function () {
 			return Session.get('flash_message');
 		}
 	});
 
+	var ativar_plano = function (v) {
+		let plano_id = Session.get('plano_ativo');
+		if (v.id.toString() === plano_id) {
+			v.active = true;
+		} else {
+			v.active = false;
+		}
+		return v;
+	};
 	var trocar_plano = function (plano_id) {
+			let planos = Session.get('planos');
+			Session.set('plano_ativo', plano_id);
 			if (plano_id === 'outro-valor') { // ativa plano para planos maiores
 				Session.set('is_outro_plano_visible', true);
-				Session.set('plano_ativo', 0);
-			} else if (plano_id === 0) { // desativa área de planos
+				Session.set('is_form_details_validate', false);
+			} else if (plano_id === '0') { // desativa área de planos
 				Session.set('is_outro_plano_visible', false);
-				Session.set('plano_ativo', 0);
+				Session.set('is_form_details_validate', false);
 			} else if (_.isNumber(parseInt(plano_id))) { // ativa plano no array de planos
 				Session.set('is_outro_plano_visible', false);
-				Session.set('plano_ativo', plano_id);
+				Session.set('is_form_details_validate', false);
 			}
+			Session.set('planos', planos.map(ativar_plano));
 	};
 
 	Template.doacao.events({
