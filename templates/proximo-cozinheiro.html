@@ -2,7 +2,7 @@
 	<div class="perfil">
 		<h2>ajude o próximo cozinheiro a realizar seu sonho</h2>
 		<p class="subtitulo">A cada mês, oferecemos a um jovem da periferia a chance de realizar o sonho de empreender no mundo da gastronomia e depois montar seu próprio negócio. Para que esse sonho seja possível, precisamos da sua ajuda.</p>
-		<p class="subtitulo">Temos auxílio de doações e retorno das vendas de refeições, porém estão faltando 20% dos nossos custos mensais para fecharmos as contas. É aí que você entra!</p>
+		<p class="subtitulo">Temos auxílio de doações porém estão faltando 20% dos nossos custos mensais para fecharmos as contas. É aí que você entra!</p>
 		<div class="meta-cozinheiro">
 			{{> meta_cozinheiro}}
 		</div>
@@ -32,7 +32,7 @@
 </template>
 
 <template name="doacao">
-	<h4>Ser um doador recorrente AINDA te dá o direito a um brinde exclusivo. Escolha o valor da sua assinatura mensal:</h4>
+	<h4>SUA DOAÇÃO AJUDA A MANTER A COZINHA SÃO PAULO FUNCIONANDO. ESCOLHA O VALOR DA SUA ASSINATURA MENSAL:</h4>
 	<div class="planos">
 		{{#each planos}}
 		<a class="plano {{name}} {{#if active}}ativo{{/if}}" id={{id}} style="background-color: {{color}}" href="/plano-{{id}}">
@@ -62,7 +62,7 @@
 		{{#if is_outro_plano_visible}}
 		<form>
 			<fieldset id="veja_como_prosseguir" class="fadeIn animated">
-				<legend>Veja como prosseguir</legend>
+				<legend>Caso deseje fazer uma doação única, ou uma doação recorrente com valor maior, ou se quiser ser nosso parceiro, entre em contato conosco no email: <a href="mailto: contato@cozinhasp.org">contato@cozinhasp.org</a></legend>
 			</fieldset>
 		</form>
 		{{else}}
