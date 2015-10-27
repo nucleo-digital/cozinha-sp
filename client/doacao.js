@@ -122,6 +122,7 @@ Template.doacao.events({
 		} else {
 			Session.set('is_form_details_validate', 'valido');
 			Session.set('flash_message', '');
+			console.log(customer);
 			Session.set('dados_doacao', customer);
 		}
 	},
@@ -162,10 +163,16 @@ Template.doacao.events({
 				var plan_id = Session.get('plano_ativo');
 				Session.set('flash_message', {className: 'loading', messages: [{text: ''}]});
 				Meteor.call('assinar_plano', plan_id, cardHash, customer, function(err, results) {
-					if ( (typeof err === undefined) && (results.statusCode === 200) ) {
+					console.log(err,results);
+					if ( (typeof results !== undefined) && (results.statusCode === 200) ) {
 						Session.set('flash_message', {
 							className: 'success',
 							messages: [{text:'Assinatura realizada com sucesso.'}]
+						});
+					} else if (typeof results !== undefined)  {
+						Session.set('flash_message', {
+							className: 'error',
+							messages: [{text:'Falha ao tentar realizar a assinatura. ' + results.content}]
 						});
 					} else {
 						Session.set('flash_message', {
