@@ -37,7 +37,14 @@ if (Meteor.isServer) {
 			return response.result;
 		},
 		'total_arrecadado': function() {
-			return HTTP.call("GET", "https://api.pagar.me/1/payables", {params: {api_key: Meteor.settings.PagarMe.API_KEY}});
+			// http://stackoverflow.com/questions/13571700/get-first-and-last-date-of-current-month-with-javascript-or-jquery
+			var date = new Date();
+			var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+			var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+			return HTTP.call("GET", "https://api.pagar.me/1/payables", {
+				params: {api_key: Meteor.settings.PagarMe.API_KEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
+			});
 		}
 	});
 

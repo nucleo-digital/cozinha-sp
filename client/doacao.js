@@ -164,20 +164,22 @@ Template.doacao.events({
 				Session.set('flash_message', {className: 'loading', messages: [{text: ''}]});
 				Meteor.call('assinar_plano', plan_id, cardHash, customer, function(err, results) {
 					console.log(err,results);
-					if ( (typeof results !== undefined) && (results.statusCode === 200) ) {
+					if ( (typeof results !== undefined) && (results !== null) && (results.statusCode === 200) ) {
 						Session.set('flash_message', {
 							className: 'success',
 							messages: [{text:'Assinatura realizada com sucesso.'}]
 						});
 					} else if (typeof results !== undefined)  {
+						console.log(err, results);
 						Session.set('flash_message', {
 							className: 'error',
-							messages: [{text:'Falha ao tentar realizar a assinatura. ' + results.content}]
+							messages: [{text:'Falha ao tentar realizar a assinatura.'}]
 						});
 					} else {
+						console.log(err, results);
 						Session.set('flash_message', {
 							className: 'error',
-							messages: [{text:'Falha ao tentar realizar a assinatura. ' + err.message}]
+							messages: [{text:'Falha ao tentar realizar a assinatura.'}]
 						});
 					}
 				});
