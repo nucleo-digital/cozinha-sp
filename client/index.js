@@ -1,6 +1,6 @@
 var timer = 0;
 var INITIAL_INTERVAL = 60;
-var META_TOTAL = 1000.00;
+var META_TOTAL = 8.143,50;
 SimpleSchema.messages({
 	required: "[label] é obrigatório",
 	minString: "[label] deve conter pelo menos [min] caracteres",
