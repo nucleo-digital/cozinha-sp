@@ -16,20 +16,22 @@
 <template name="meta_cozinheiro">
 	<div class="chef-destaque">
 		<div class="imagem"><img src="/images/generica.jpeg" class="h" alt="Mirante Pacaembu" /></div>
-		<h3>O Mirante Pacaembu</h3>
-		<p>É um dos únicos espaços de estar da região, que tem ganhado mais vida com a presença do container. Ajude a mante-lo!</p>
-	</div>
-	<div class="progresso">
-		<div class="barra">
-			<div class="preenchido" style="width: {{progresso_meta.porcentagem}}%;">
+		<div class="meta-conteudo">
+			<h3>O Mirante Pacaembu</h3>
+			<p>É um dos únicos espaços de estar da região, que tem ganhado mais vida com a presença do container. Ajude a mante-lo!</p>
+			<div class="progresso">
+				<div class="barra">
+					<div class="preenchido" style="width: {{progresso_meta.porcentagem}}%;">
 
-				<p class="valor"><span>R$</span>{{progresso_meta.alcancado}}</p>
+						<p class="valor"><span>R$</span>{{progresso_meta.alcancado}}</p>
+					</div>
+				</div>
+				<div class="objetivo"><p class="valor"><span>R$</span>{{progresso_meta.total}}</p></div>
 			</div>
+			<p class="legend">Total alcançado até o momento. - Próxima atualizacão da meta em {{timer_atualizar_meta}} segundos.</p>
 		</div>
-		<div class="objetivo"><p class="valor"><span>R$</span>{{progresso_meta.total}}</p></div>
 	</div>
 
-	<p class="legend">Total alcançado até o momento. - Próxima atualizacão da meta em {{timer_atualizar_meta}} segundos.</p>
 </template>
 
 <template name="doacao">
