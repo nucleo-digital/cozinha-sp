@@ -5,6 +5,9 @@ if (Meteor.isClient) {
 		},
 		progresso_meta: function () {
 			return Session.get('progresso_meta');
+		},
+		erro_meta: function () {
+			return Session.get('erro_meta');
 		}
 	});
 }
@@ -42,6 +45,9 @@ if (Meteor.isServer) {
 			var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
 			var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
+			if (Meteor.settings.PagarMe == undefined || Meteor.settings.PagarMe.API_KEY) {
+				return null;
+			}
 			return HTTP.call("GET", "https://api.pagar.me/1/payables", {
 				params: {api_key: Meteor.settings.PagarMe.API_KEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
 			});
