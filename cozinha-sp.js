@@ -13,12 +13,16 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+
+
+  var APIKEY = process.env.PAGARME_KEY;
+
 	Meteor.methods({
 		'assinar_plano': function (plan_id, card_hash, customer) {
 			var response = Async.runSync(function(done) {
 				HTTP.call("POST", "https://api.pagar.me/1/subscriptions", {
 						params: {
-							api_key: Meteor.settings.PagarMe.API_KEY,
+							api_key: APIKEY,
 							plan_id: plan_id,
 							card_hash: card_hash,
 							'customer[name]': customer.name,
@@ -45,11 +49,11 @@ if (Meteor.isServer) {
 			var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
 			var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-			if (Meteor.settings.PagarMe == undefined || Meteor.settings.PagarMe.API_KEY) {
+			if (typeof(APIKEY) == "undefined") {
 				return null;
 			}
 			return HTTP.call("GET", "https://api.pagar.me/1/payables", {
-				params: {api_key: Meteor.settings.PagarMe.API_KEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
+				params: {api_key: APIKEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
 			});
 		}
 	});
