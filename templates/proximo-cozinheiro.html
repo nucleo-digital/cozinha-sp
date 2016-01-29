@@ -99,7 +99,7 @@
 						<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15 value="{{dados_doacao.address.complementary}}">
 					</div>
 					<div class="input text">
-						<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento" value="{{dados_doacao.born_at}}">
+						<input type="date" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento" value="{{dados_doacao.born_at}}">
 					</div>
 					<div class="input text">
 						<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required value="{{dados_doacao.phone.ddd}}">
@@ -109,8 +109,8 @@
 					</div>
 					<div class="input radio">
 						<label for="customer_gender">Gênero</label>
-						<input type="radio" name="customer_gender" value="M">Masculino
-						<input type="radio" name="customer_gender" value="F">Feminino
+            <label><input type="radio" id="customer_male" name="customer_gender[]" value="M">Masculino</label>
+            <label><input type="radio" id="customer_female" name="customer_gender[]" value="F">Feminino</label>
 					</div>
 					<div class="clear"></div>
 					<div class="input submit">

@@ -110,6 +110,9 @@ Template.doacao.events({
 			}
 		};
 
+
+    console.log(evt.target.customer_gender.value);
+
 		ctxt = DadosPessoaisSchema.namedContext("myContext");
 		isValid = ctxt.validate(customer);
 
