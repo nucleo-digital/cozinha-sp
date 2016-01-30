@@ -93,7 +93,7 @@ Template.doacao.events({
 
 		var customer = {
 			name            : evt.target.customer_name.value,
-			document_number : parseInt(evt.target.customer_document_number.value),
+			document_number : evt.target.customer_document_number.value,
 			born_at         : new Date(evt.target.customer_born_at.value),
 			gender          : evt.target.customer_gender.value,
 			email           : evt.target.customer_email.value,
