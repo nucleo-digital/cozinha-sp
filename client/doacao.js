@@ -131,7 +131,7 @@ Template.doacao.events({
 	},
 	'submit #dados_pagamento_apoiador': function (evt) {
 		evt.preventDefault();
-		PagarMe.encryption_key = process.env.PAGARME_SECRET;
+		PagarMe.encryption_key = Meteor.settings.public.encryption_key;
 		var creditCard = new PagarMe.creditCard();
 		creditCard.cardHolderName	   = evt.target.card_holder_name.value;
 		creditCard.cardExpirationMonth = evt.target.card_expiration_month.value;

@@ -75,6 +75,7 @@ Meteor.setInterval(function () {
 		timer = INITIAL_INTERVAL;
 		Meteor.call('total_arrecadado', function(err, results) {
 			var alcancado = 0;
+      console.log(results);
 			if (results) {
 				results.data.map(function(v) {
 					alcancado = alcancado+v.amount-v.fee;

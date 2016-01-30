@@ -15,7 +15,7 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
 
 
-  var APIKEY = process.env.PAGARME_KEY;
+  var APIKEY = Meteor.settings.public.api_key;
 
 	Meteor.methods({
 		'assinar_plano': function (plan_id, card_hash, customer) {

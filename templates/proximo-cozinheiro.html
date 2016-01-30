@@ -83,9 +83,22 @@
 					<div class="input text">
 						<input type="text" name="customer_document_number" placeholder="CPF" size=15 required value="{{dados_doacao.document_number}}">
 					</div>
+
+          <div class="input text">
+            <select name="customer_gender" id="customer_gender">
+              <option>Gênero</option>
+              <option value="F">Feminino</option>
+              <option value="M">Masculino</option>
+            </select>
+					</div>
+
+
+
 					<div class="input text">
 						<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required value="{{dados_doacao.address.zipcode}}">
 					</div>
+
+
 					<div class="input text">
 						<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required value="{{dados_doacao.address.street}}">
 					</div>
@@ -107,11 +120,7 @@
 					<div class="input text">
 						<input type="number" name="customer_phone_number" placeholder="Telefone" required value="{{dados_doacao.phone.number}}">
 					</div>
-					<div class="input radio">
-						<label for="customer_gender">Gênero</label>
-            <label><input type="radio" id="customer_male" name="customer_gender[]" value="M">Masculino</label>
-            <label><input type="radio" id="customer_female" name="customer_gender[]" value="F">Feminino</label>
-					</div>
+
 					<div class="clear"></div>
 					<div class="input submit">
 						<button class="secondary" id="cancelar">cancelar</button>
