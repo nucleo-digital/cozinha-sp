@@ -177,8 +177,9 @@ Template.doacao.events({
 
 
             var text = "";
-            for (error in results.response.data.errors) {
-              text += error.message + "<br/>";
+            var errors = results.response.data.errors;
+            for (var i = 0; i <= errors.length ; i++) {
+              text += errors[i].message + "\n";
             }
 
 						Session.set('flash_message', {
