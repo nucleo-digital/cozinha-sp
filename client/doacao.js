@@ -173,7 +173,7 @@ Template.doacao.events({
 							messages: [{text:'Assinatura realizada com sucesso.'}]
 						});
 					} else if (typeof results !== undefined)  {
-						console.log(err, results);
+						console.log(results.response.data.errors);
 
 
             var text = "";
