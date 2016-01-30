@@ -174,9 +174,17 @@ Template.doacao.events({
 						});
 					} else if (typeof results !== undefined)  {
 						console.log(err, results);
+
+
+            var text = "";
+            for (error in results.data.errors) {
+              text += error.message + "<br/>";
+
+            }
+
 						Session.set('flash_message', {
 							className: 'error',
-							messages: [{text:'Falha ao tentar realizar a assinatura.'}]
+							messages: [{text: text }]
 						});
 					} else {
 						console.log(err, results);
