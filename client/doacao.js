@@ -76,14 +76,14 @@ Template.doacao.events({
 		EnderecoSchema = new SimpleSchema({
 			street        : {type: String, min: 0},
 			neighborhood  : {type: String, min: 0},
-			zipcode       : {type: Number, regEx: /^[0-9]{8}$/, label: 'CEP'},
-			street_number : {type: Number, label: 'Número'},
+			zipcode       : {type: String, regEx: /^[0-9]{8}$/, label: 'CEP'},
+			street_number : {type: String, label: 'Número'},
 			complementary : {type: String, label: 'Complemento'}
 		});
 		DadosPessoaisSchema = new SimpleSchema({
 			name            : {type: String, min: 5, label: 'Nome'},
 			email           : {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail'},
-			document_number : {type: Number, min: 11, label: 'CPF'},
+			document_number : {type: String, min: 11, label: 'CPF'},
 			born_at         : {type: Date, label: 'Data de nascimento'},
 			gender          : {type: String, allowedValues: ['F', 'M'], label: 'Gênero'},
 			address : {type: EnderecoSchema},
@@ -100,8 +100,8 @@ Template.doacao.events({
 			address : {
 				street        : evt.target.customer_address_street.value,
 				neighborhood  : evt.target.customer_address_neighborhood.value,
-				zipcode       : parseInt(evt.target.customer_address_zipcode.value),
-				street_number : parseInt(evt.target.customer_address_street_number.value),
+				zipcode       : evt.target.customer_address_zipcode.value,
+				street_number : evt.target.customer_address_street_number.value,
 				complementary : evt.target.customer_address_complementary.value
 			},
 			phone : {
