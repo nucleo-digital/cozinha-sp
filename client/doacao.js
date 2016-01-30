@@ -173,18 +173,10 @@ Template.doacao.events({
 							messages: [{text:'Assinatura realizada com sucesso.'}]
 						});
 					} else if (typeof results !== undefined)  {
-						console.log(results.response.data.errors[0].message);
-
-
-            var text = "";
-            var errors = results.response.data.errors;
-            for (var i = 0; i <= errors.length ; i++) {
-              text += errors[i].message + "\n";
-            }
-
+						console.log(results.response.data.errors);
 						Session.set('flash_message', {
 							className: 'error',
-							messages: [{text: text }]
+							messages: [{text: results.response.data.errors[0].message }]
 						});
 					} else {
 						console.log(err, results);
