@@ -76,14 +76,14 @@ Template.doacao.events({
 		EnderecoSchema = new SimpleSchema({
 			street        : {type: String, min: 0},
 			neighborhood  : {type: String, min: 0},
-			zipcode       : {type: String, regEx: /^[0-9]{8}$/, label: 'CEP'},
-			street_number : {type: String, label: 'Número'},
+			zipcode       : {type: Number, regEx: /^[0-9]{8}$/, label: 'CEP'},
+			street_number : {type: Number, label: 'Número'},
 			complementary : {type: String, label: 'Complemento'}
 		});
 		DadosPessoaisSchema = new SimpleSchema({
 			name            : {type: String, min: 5, label: 'Nome'},
 			email           : {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail'},
-			document_number : {type: String, min: 11, label: 'CPF'},
+			document_number : {type: Number, min: 11, label: 'CPF'},
 			born_at         : {type: Date, label: 'Data de nascimento'},
 			gender          : {type: String, allowedValues: ['F', 'M'], label: 'Gênero'},
 			address : {type: EnderecoSchema},
@@ -93,15 +93,15 @@ Template.doacao.events({
 
 		var customer = {
 			name            : evt.target.customer_name.value,
-			document_number : evt.target.customer_document_number.value,
+			document_number : parseInt(evt.target.customer_document_number.value),
 			born_at         : new Date(evt.target.customer_born_at.value),
 			gender          : evt.target.customer_gender.value,
 			email           : evt.target.customer_email.value,
 			address : {
 				street        : evt.target.customer_address_street.value,
 				neighborhood  : evt.target.customer_address_neighborhood.value,
-				zipcode       : evt.target.customer_address_zipcode.value,
-				street_number : evt.target.customer_address_street_number.value,
+				zipcode       : parseInt(evt.target.customer_address_zipcode.value),
+				street_number : parseInt(evt.target.customer_address_street_number.value),
 				complementary : evt.target.customer_address_complementary.value
 			},
 			phone : {
@@ -109,9 +109,6 @@ Template.doacao.events({
 				number : parseInt(evt.target.customer_phone_number.value)
 			}
 		};
-
-
-    console.log(evt.target.customer_gender.value);
 
 		ctxt = DadosPessoaisSchema.namedContext("myContext");
 		isValid = ctxt.validate(customer);
@@ -131,7 +128,7 @@ Template.doacao.events({
 	},
 	'submit #dados_pagamento_apoiador': function (evt) {
 		evt.preventDefault();
-		PagarMe.encryption_key = Meteor.settings.public.encryption_key;
+		PagarMe.encryption_key = Meteor.settings.public.PagarMe.ENCRYPTION_KEY;
 		var creditCard = new PagarMe.creditCard();
 		creditCard.cardHolderName	   = evt.target.card_holder_name.value;
 		creditCard.cardExpirationMonth = evt.target.card_expiration_month.value;
@@ -173,10 +170,10 @@ Template.doacao.events({
 							messages: [{text:'Assinatura realizada com sucesso.'}]
 						});
 					} else if (typeof results !== undefined)  {
-						console.log(results.response.data.errors);
+						console.log(err, results);
 						Session.set('flash_message', {
 							className: 'error',
-							messages: [{text: results.response.data.errors[0].message }]
+							messages: [{text:'Falha ao tentar realizar a assinatura.'}]
 						});
 					} else {
 						console.log(err, results);

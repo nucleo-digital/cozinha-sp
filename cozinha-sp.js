@@ -5,24 +5,17 @@ if (Meteor.isClient) {
 		},
 		progresso_meta: function () {
 			return Session.get('progresso_meta');
-		},
-		erro_meta: function () {
-			return Session.get('erro_meta');
 		}
 	});
 }
 
 if (Meteor.isServer) {
-
-
-  var APIKEY = Meteor.settings.public.api_key;
-
 	Meteor.methods({
 		'assinar_plano': function (plan_id, card_hash, customer) {
 			var response = Async.runSync(function(done) {
 				HTTP.call("POST", "https://api.pagar.me/1/subscriptions", {
 						params: {
-							api_key: APIKEY,
+							api_key: Meteor.settings.PagarMe.API_KEY,
 							plan_id: plan_id,
 							card_hash: card_hash,
 							'customer[name]': customer.name,
@@ -49,11 +42,8 @@ if (Meteor.isServer) {
 			var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
 			var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-			if (typeof(APIKEY) == "undefined") {
-				return null;
-			}
 			return HTTP.call("GET", "https://api.pagar.me/1/payables", {
-				params: {api_key: APIKEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
+				params: {api_key: Meteor.settings.PagarMe.API_KEY, payment_date: ['>='+firstDay.getTime(), '<='+lastDay.getTime()]}
 			});
 		}
 	});
