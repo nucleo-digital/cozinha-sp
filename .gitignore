@@ -1,4 +1,2 @@
 .meteor/local
 settings.json
-.gitignore
-node_module
