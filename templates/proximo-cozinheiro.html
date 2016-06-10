@@ -16,20 +16,22 @@
 <template name="meta_cozinheiro">
 	<div class="chef-destaque">
 		<div class="imagem"><img src="/images/generica.jpeg" class="h" alt="Mirante Pacaembu" /></div>
-		<h3>O Mirante Pacaembu</h3>
-		<p>É um dos únicos espaços de estar da região, que tem ganhado mais vida com a presença do container. Ajude a mante-lo!</p>
-	</div>
-	<div class="progresso">
-		<div class="barra">
-			<div class="preenchido" style="width: {{progresso_meta.porcentagem}}%;">
+		<div class="meta-conteudo">
+			<h3>O Mirante Pacaembu</h3>
+			<p>É um dos únicos espaços de estar da região, que tem ganhado mais vida com a presença do container. Ajude a mante-lo!</p>
+			<div class="progresso">
+				<div class="barra">
+					<div class="preenchido" style="width: {{progresso_meta.porcentagem}}%;">
 
-				<p class="valor"><span>R$</span>{{progresso_meta.alcancado}}</p>
+						<p class="valor"><span>R$</span>{{progresso_meta.alcancado}}</p>
+					</div>
+					<div class="objetivo"><p class="valor"><span>R$</span>{{progresso_meta.total}}</p></div>
+				</div>
 			</div>
+			<p class="legend">Total alcançado até o momento. - Próxima atualizacão da meta em {{timer_atualizar_meta}} segundos.</p>
 		</div>
-		<div class="objetivo"><p class="valor"><span>R$</span>{{progresso_meta.total}}</p></div>
 	</div>
 
-	<p class="legend">Total alcançado até o momento. - Próxima atualizacão da meta em {{timer_atualizar_meta}} segundos.</p>
 </template>
 
 <template name="doacao">
@@ -79,11 +81,24 @@
 						<input type="email" name="customer_email" placeholder="E-mail" size="30" required value="{{dados_doacao.email}}">
 					</div>
 					<div class="input text">
-						<input type="text" name="customer_document_number" placeholder="CPF" size=15 required value="{{dados_doacao.document_number}}">
+						<input type="number" name="customer_document_number" placeholder="CPF" size=15 required value="{{dados_doacao.document_number}}">
 					</div>
+
+          <div class="input text">
+            <select name="customer_gender" id="customer_gender">
+              <option>Gênero</option>
+              <option value="F">Feminino</option>
+              <option value="M">Masculino</option>
+            </select>
+					</div>
+
+
+
 					<div class="input text">
 						<input type="text" name="customer_address_zipcode" placeholder="CEP" size=15 required value="{{dados_doacao.address.zipcode}}">
 					</div>
+
+
 					<div class="input text">
 						<input type="text" name="customer_address_street" placeholder="Endereco" size=40 required value="{{dados_doacao.address.street}}">
 					</div>
@@ -97,7 +112,7 @@
 						<input type="text" name="customer_address_complementary" placeholder="Complemento" size=15 value="{{dados_doacao.address.complementary}}">
 					</div>
 					<div class="input text">
-						<input type="text" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento" value="{{dados_doacao.born_at}}">
+						<input type="date" name="customer_born_at" placeholder="Data de nascimento" required title="Data de nascimento" value="{{dados_doacao.born_at}}">
 					</div>
 					<div class="input text">
 						<input type="number" name="customer_phone_ddd" placeholder="DDD" size=10 required value="{{dados_doacao.phone.ddd}}">
@@ -105,11 +120,7 @@
 					<div class="input text">
 						<input type="number" name="customer_phone_number" placeholder="Telefone" required value="{{dados_doacao.phone.number}}">
 					</div>
-					<div class="input radio">
-						<label for="customer_gender">Gênero</label>
-						<input type="radio" name="customer_gender" value="M">Masculino
-						<input type="radio" name="customer_gender" value="F">Feminino
-					</div>
+
 					<div class="clear"></div>
 					<div class="input submit">
 						<button class="secondary" id="cancelar">cancelar</button>

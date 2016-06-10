@@ -1,6 +1,6 @@
 var timer = 0;
 var INITIAL_INTERVAL = 60;
-var META_TOTAL = 8.143,50;
+var META_TOTAL = 8143.50;
 SimpleSchema.messages({
 	required: "[label] é obrigatório",
 	minString: "[label] deve conter pelo menos [min] caracteres",
@@ -75,11 +75,22 @@ Meteor.setInterval(function () {
 		timer = INITIAL_INTERVAL;
 		Meteor.call('total_arrecadado', function(err, results) {
 			var alcancado = 0;
-			results.data.map(function(v) {
-				alcancado = alcancado+v.amount-v.fee;
-			})
+      console.log(results);
+			if (results) {
+				results.data.map(function(v) {
+					alcancado = alcancado+v.amount-v.fee;
+				});
+			} else {
+				let erro_msg = 'Não foi possível obter o valor alcançado. Erro ao conectar ao gateway de pagamento.';
+				Session.set('erro_meta', erro_msg);
+				window.console && console.error(erro_msg);
+			}
 			let porcentagem = ((META_TOTAL/100)*alcancado)/100;
-			Session.set('progresso_meta', { 'alcancado': alcancado, 'total': META_TOTAL, porcentagem: porcentagem});
+			var value = META_TOTAL;
+			var i = parseInt(value = Math.abs(+value || 0).toFixed(2)) + "";
+			var j = (j = i.length) > 3 ? j % 3 : 0;
+			let meta_total = (j ? i.substr(0, j) + '.' : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + '.') + ',' + Math.abs(value - i).toFixed(2).slice(2);
+			Session.set('progresso_meta', { 'alcancado': alcancado, 'total': meta_total, porcentagem: porcentagem});
 		});
 	} else {
 		timer--;

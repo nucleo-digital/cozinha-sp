@@ -5,10 +5,19 @@
 		background-position: 0 0
 
 .proximo-cozinheiro .perfil
-	background-image: url('/images/bg-destaque.svg')
-	background-position: 50% 100%
-	background-repeat: no-repeat
-	background-size: 90%
+	.meta-conteudo
+		width: 90%
+		mask-image: url("/images/bg-destaque-mask.svg");
+		mask-position: center center;
+		mask-size: cover;
+		padding: 50px 0 60px
+		margin: -50px auto 10px
+		background-color: #D91F5D
+		position: relative
+		z-index: -1
+		p
+			width: 80%
+			margin: 0 auto 3em;
 	.progresso
 		center(75%)
 		p
@@ -20,7 +29,6 @@
 			span
 				font-size: 65%
 		.barra
-			col(10/12)
 			background-image: repeating-linear-gradient(
 				135deg,
 				rosa,
@@ -40,7 +48,8 @@
 					font-size: 1.5em
 					padding: .5em 1em
 		.objetivo
-			col(2/12)
+			float: right
+			margin-right: 1em
 
 .proximo-cozinheiro .doacao
 	.planos
@@ -51,14 +60,16 @@
 			display: inline-block
 			width: 5.5em
 			height: 5.5em
-			margin: 0 1em
+			margin: 1em
 			font-size: 1em
 			font-weight: 400
 			line-height: 5.5em
 			vertical-align: middle
 			text-decoration: none
 			mask-image: url('/images/bg-circle-mask.svg')
-			mask-size: cover
+			mask-size: 98%
+			mask-position: center
+			border-radius: 50%
 			&.ativo
 				line-height: 5.3em
 				width: 5.3em
@@ -103,7 +114,7 @@
 			font-weight: 400
 			text-transform: uppercase
 			margin: .5em 0
-		input
+		input, select
 			font-family: Roboto
 			color: darken(cinza, 30%)
 			&[name=customer_address_street_number],
@@ -123,3 +134,5 @@
 			input
 				color: white
 				margin: 0 1em
+
+
